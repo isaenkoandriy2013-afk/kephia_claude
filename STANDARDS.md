@@ -60,6 +60,9 @@ A `.mu` file is a Unity asset bundle. Renaming a Blender `.fbx` or any other fil
 - **Select the child mesh object**, not the root FBX object, before clicking KSP → Write to file. Exporting the root produces a valid-looking .mu that contains no geometry (95 bytes or similar tiny size).
 - **Unity 2019 does not import DDS textures.** Convert textures to PNG before importing into the Unity Assets folder for previewing/assigning materials. The actual in-game textures referenced in the Parallax scatter config are still the original DDS files in GameData — the PNG is only for Unity's material preview.
 - **A correctly exported .mu with a mesh is typically 10–15 KB+.** A file under ~1 KB almost always means the root object was selected instead of the child mesh.
+- **Position and rotation must be 0,0,0 before exporting.** Any baked-in position offset will cause the scatter to spawn underground. Any baked-in rotation will tilt the model sideways in-game. Always zero out Transform before clicking Write.
+- **Blender FBX axis settings:** Export with **Y Forward, Z Up**. In Blender, rotate the mesh in Edit Mode so the tip points up (+Z), base sits on the grid (Z=0), then Apply All Transforms before exporting. Unity will show rotation as ~-90° X due to axis conversion — this is normal and correct.
+- **frustumCullingStartRange** should be close to the scatter's render range for large objects. Too small (e.g. 10) causes objects to flicker or disappear when the camera moves. Start at ~2500 for large scatters with range=3000.
 
 ---
 

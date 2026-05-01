@@ -2,6 +2,14 @@
 
 ---
 
+## 2026-05-01 (session 3)
+
+### Fixed
+- `Models/Elaris/ElarisSpike001.mu` — fixed underground spawning caused by baked-in position offset (Y: -0.47, Z: -0.31) and wrong rotation (-102° X). Re-exported from Blender with mesh base at origin (Z=0), tip pointing up, then FBX exported with Y Forward/Z Up axes. Unity rotation shows as -89.98° X due to axis conversion but mesh is correctly oriented.
+- `Misc/Parallax/Elaris/Parallax_Elaris_Scatters.cfg` — fixed spikes disappearing when camera moves: changed `frustumCullingStartRange` from 10 to 2500, `frustumCullingScreenMargin` from 200 to 100. Fixed close-up disappearing: reduced first LOD range from 1500 to 500. Updated `minScale`/`maxScale` to 80-120 to compensate for true-scale mesh export.
+
+---
+
 ## 2026-05-01 (session 2)
 
 ### Fixed
