@@ -2,6 +2,16 @@
 
 ---
 
+## 2026-05-01 (session 2)
+
+### Fixed
+- `Models/Elaris/ElarisSpike001.mu` — re-exported from Unity at scale `1,1,1` (was `100,100,175`), selecting the child mesh object instead of the root FBX object. Previous export was identical file size due to scale being stored as floats, but geometry bounds were broken causing Parallax to silently skip rendering.
+- `Misc/Parallax/Elaris/Parallax_Elaris_Scatters.cfg` — temporarily set ElarisSpikes distribution to max spawn (spawnChance=1.0, populationMultiplier=5, minScale=10, maxScale=20, no altitude/slope restrictions) to diagnose visibility issue.
+- `Misc/Parallax/Elaris/Parallax_Elaris_PQSMod.cfg` and `Phion/Parallax_Phion_PQSMod.cfg` — reduced `subdivisionLevel` from 7 to 5 to reduce performance overhead.
+- Deleted stray `GameData/ets/` folder containing a misplaced copy of `ElarisSpike001.mu`.
+
+---
+
 ## 2026-05-01
 
 ### Added

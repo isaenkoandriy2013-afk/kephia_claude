@@ -54,6 +54,13 @@ A `.mu` file is a Unity asset bundle. Renaming a Blender `.fbx` or any other fil
 - Parallax requires exactly 2 LOD entries per scatter — use the same model path for both LODs if only one mesh exists
 - Avoid dots in model filenames (e.g. `ElarisSpike0.01` fails; use `ElarisSpike001` instead)
 
+### Unity PartTools export gotchas
+
+- **Scale must be `1, 1, 1`** on the object's Transform before exporting. Exporting at e.g. `100,100,175` bakes that scale into the .mu — the object will be enormous in-game and Parallax bounds calculations may silently fail.
+- **Select the child mesh object**, not the root FBX object, before clicking KSP → Write to file. Exporting the root produces a valid-looking .mu that contains no geometry (95 bytes or similar tiny size).
+- **Unity 2019 does not import DDS textures.** Convert textures to PNG before importing into the Unity Assets folder for previewing/assigning materials. The actual in-game textures referenced in the Parallax scatter config are still the original DDS files in GameData — the PNG is only for Unity's material preview.
+- **A correctly exported .mu with a mesh is typically 10–15 KB+.** A file under ~1 KB almost always means the root object was selected instead of the child mesh.
+
 ---
 
 ## Config Hygiene
